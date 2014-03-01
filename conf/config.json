@@ -1,0 +1,23 @@
+{
+  "project_master": {
+    "teamCityUrl": "http://teamcity.mydomain.com:8111/teamcity/guestAuth/app/rest",
+    "project": "My Project Master",
+    "stages": [
+      { "label": "Compile",      "buildTypeId": "bt1" },
+      { "label": "Unit Tests",   "buildTypeId": "bt2" },
+      { "label": "Func Tests",   "buildTypeId": "bt3" },
+      { "label": "Deploy",       "buildTypeId": "bt4" }
+    ]
+  },
+
+  "project_branch": {
+    "teamCityUrl": "http://teamcity.mydomain.com:8111/teamcity/guestAuth/app/rest",
+    "project": "My Project Release Branch",
+    "stages": [
+      { "label": "Compile",      "buildTypeId": "bt5" },
+      { "label": "Unit Tests",   "buildTypeId": "bt6" },
+      { "label": "Func Tests",   "buildTypeId": "bt7" },
+      { "label": "Deploy",       "buildTypeId": "bt8" }
+    ]
+  }
+}

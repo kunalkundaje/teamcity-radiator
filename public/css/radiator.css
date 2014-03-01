@@ -1,0 +1,87 @@
+body {
+	font-size: 200%;
+	color: #fff;
+	background-color: #000;
+}
+
+.builds {
+	padding: 5px;
+}
+
+.build {
+	padding: 10px;
+	margin: 5px 5px 15px 5px;
+	border-radius: 5px;
+}
+
+.build-number {
+	margin-right: 10px;
+}
+
+.build-success {
+	background-color: #5B9727;
+}
+
+.build-failure {
+	background-color: #CE1B1F;
+}
+
+.build-running {
+	background-color: #1A7AC5;
+}
+
+.build-unknown {
+	background-color: #3A3939;
+}
+
+.build-number {
+	font-weight: bold;
+	font-size: 110%;
+}
+
+.changes {
+}
+
+.stage {
+	text-align: center;
+	padding: 5px 15px 5px 15px;
+	margin: 5px;
+	border: 2px solid #000;
+	border-radius: 5px;
+}
+
+
+@-webkit-keyframes red-glow {
+  from { background-color: #bc330d; -webkit-box-shadow: 0 0 9px  #333; }
+  50%  { background-color: #e33100; -webkit-box-shadow: 0 0 18px #e33100; }
+  to   { background-color: #bc330d; -webkit-box-shadow: 0 0 9px  #333; }
+}
+
+@-webkit-keyframes blue-glow {
+	from { background-color: #007d9a; -webkit-box-shadow: 0 0 9px  #333; }
+	50%  { background-color: #2daebf; -webkit-box-shadow: 0 0 18px #2daebf; }
+	to   { background-color: #007d9a; -webkit-box-shadow: 0 0 9px  #333; }
+}
+
+.stage-success {
+	background-color: #90DA22;
+	color: #2D5011;
+}
+
+.stage-failure {
+	background-color: #FF0000;
+	color: #551011;
+}
+
+.stage-running {
+	background-color: #0091AA;
+	color: #083E47;
+	-webkit-animation-name: 'blue-glow';
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.stage-unknown {
+	background-color: #ccc;
+	color: #333;
+}

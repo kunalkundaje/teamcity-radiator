@@ -1,0 +1,17 @@
+extends layout
+
+block mainContent
+  .container-fluid
+    h1 #{project} Builds
+
+    .builds
+      - for(var buildIndex in builds)
+        - var build = builds[buildIndex]
+        div(class='row build build-#{build.status}')
+          .build-number #{build.number}
+          ul.changes
+            - for(var changeIndex in build.changes)  
+              li #{build.changes[changeIndex]}
+          - for(var stageIndex in build.stages)
+            - var stage = build.stages[stageIndex]
+            div(class='pull-left stage stage-#{stage.status}') #{stage.label}
