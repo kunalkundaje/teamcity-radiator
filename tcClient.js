@@ -48,6 +48,12 @@ var TcClient = {
 
         }
       }, this);
+
+      var numRequiredStages = stages.length - stages.filter(function(stage) { return stage.optional }).length + 1;
+      if (pipeline.stages.length !== numRequiredStages && pipeline.status !== 'running') {
+        pipeline.status = 'unknown';
+      }
+
     }, this);
 
     data.pipelines = pipelines;
