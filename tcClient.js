@@ -73,20 +73,24 @@ var TcClient = {
   _fetchChangesForPipeline: function(pipeline, callback) {
     var requestUrl = this.teamCityUrl + '/changes?locator=build:(id:' + pipeline.id + ')';
     TcClient._getJsonResponse(requestUrl, function (err, result) {
-      if(result) {
-        var changes = result.changes ? result.changes.change : [];
-        changes.forEach(function (change) {
-          var changeId         = change.$.id,
-              changeRequestUrl = this.teamCityUrl + '/changes/id:' + changeId;
+      if(result.changes && result.changes.change) {
+        var changes = result.changes.change;
+        async.each(changes, 
+          function (change, callback) {
+            var changeId         = change.$.id,
+                changeRequestUrl = this.teamCityUrl + '/changes/id:' + changeId;
 
-          TcClient._getJsonResponse(changeRequestUrl, function (err, result) {
-            if(result) {
-              pipeline.changes.push(result.change.comment.shift());
-            }
+            TcClient._getJsonResponse(changeRequestUrl, function (err, result) {
+              if(result) {
+                pipeline.changes.push(result.change.comment.shift());
+              }
+              callback(null);
+            });
+          }, 
+          function (err) {
             callback(null);
-          });
-
-        }, this);
+          }
+        );
       } else {
         callback(null);
       }
