@@ -1,12 +1,8 @@
-var config = require('../config.js'), 
+var config = require('../lib/config'), 
     expect = require('chai').expect;
 
 describe('Config', function () {
   describe('#readConfig', function () {
-
-    it('exists as a method', function () {
-      expect(typeof config.readConfig).to.eql('function');
-    });
 
     it('returns a config object for a valid project key', function (done) {
       config.readConfig('project_master', function (err, result) {

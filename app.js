@@ -1,7 +1,7 @@
 var express  = require('express'),
     async    = require('async'),
-    config   = require('./config'),
-    tcClient = require('./tcClient'),
+    config   = require('./lib/config'),
+    tcClient = require('./lib/tcClient'),
     app      = express(),
     port     = process.env.PORT || 3000;
 
@@ -30,16 +30,19 @@ app.get('/builds/:projectKey', function (request, response) {
   var projectKey = request.params['projectKey'];
 
   async.waterfall([
-    function (callback) {
-      callback(null, projectKey);
-    },
-    config.readConfig,
-    tcClient.fetchBuilds,
-    tcClient.createPipelines,
-    tcClient.fetchChanges
-  ],
-  function (error, result) {
-    response.render('builds', { project: result.project, 
-                                builds: result.pipelines });
-  });
+      function (callback) { callback(null, projectKey); },
+      config.readConfig,
+      tcClient.fetchBuilds,
+      tcClient.createPipelines,
+      tcClient.fetchChanges
+    ],
+    function (error, result) {
+      if (error) {
+        response.render('error', { error: error });
+      } else {
+        response.render('builds', { project: result.project, 
+                                    builds:  result.pipelines });
+      }
+    }
+  );
 });
