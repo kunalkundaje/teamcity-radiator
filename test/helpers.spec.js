@@ -68,11 +68,13 @@ describe('Helpers', function () {
   describe('#parseTimestamp', function () {
 
     it('parses a TeamCity API timestamp', function () {
-      var tcTimestamp = '20140221T105606-0500';
+      var tcTimestamp       = '20140221T105606-0500',
+          expectedDate      = new Date('2014-02-21T10:56:06-0500'),
+          expectedTimestamp = expectedDate.toDateString() + ' ' + expectedDate.toLocaleTimeString();
 
       var parsedTimestamp = helpers.parseTimestamp(tcTimestamp);
 
-      expect(parsedTimestamp).to.eq('Fri Feb 21 2014 10:56:06');
+      expect(parsedTimestamp).to.eq(expectedTimestamp);
     });
 
   });
