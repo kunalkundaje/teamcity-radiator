@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<change username="johndoe" date="20140221T105319-0500" id="3">
+	<comment>Gray means UNKNOWN. This could be because all required steps did not run.</comment>
+</change>

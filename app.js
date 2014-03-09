@@ -2,6 +2,7 @@ var express  = require('express'),
     async    = require('async'),
     config   = require('./lib/config'),
     tcClient = require('./lib/tcClient'),
+    stub     = require('./stub/stub'),
     app      = express(),
     port     = process.env.PORT || 3000;
 
@@ -27,11 +28,16 @@ app.configure('production', function() {
 app.listen(port);
 
 app.get('/builds/:projectKey', function (request, response) {
-  var projectKey = request.params['projectKey'];
+  var projectKey = request.params['projectKey'],
+      getProjectKey = function (callback) { callback(null, projectKey); };
+
+  if (process.argv[2] === 'stub') {
+    stub.start(projectKey);
+  }
 
   async.waterfall([
-      function (callback) { callback(null, projectKey); },
-      config.readConfig,
+      getProjectKey,
+      config.readProjectConfig,
       tcClient.fetchBuilds,
       tcClient.createPipelines,
       tcClient.fetchChanges

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<builds count="5" nextHref="/guestAuth/app/rest/builds/?locator=buildType:bt1,count:5,canceled:any,running:any">
+	<build id="4" number="1.0.0-4" status="SUCCESS" buildTypeId="bt1" startDate="20140221T105606-0500" />
+	<build id="3" number="1.0.0-3" status="SUCCESS" buildTypeId="bt1" startDate="20140221T064147-0500" />
+	<build id="2" number="1.0.0-2" status="SUCCESS" buildTypeId="bt1" startDate="20140221T043527-0500" />
+	<build id="1" number="1.0.0-1" status="SUCCESS" buildTypeId="bt1" startDate="20140221T022015-0500" />
+</builds>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<change username="johndoe" date="20140221T105319-0500" id="4">
+	<comment>It could also occur if a stage in the pipeline was canceled.</comment>
+</change>

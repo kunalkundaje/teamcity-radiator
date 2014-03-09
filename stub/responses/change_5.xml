@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<change username="johndoe" date="20140221T105319-0500" id="5">
+	<comment>Blue means IN PROGRESS. The currently running stage also glows blue. Oooh.</comment>
+</change>
