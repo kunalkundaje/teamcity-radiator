@@ -18,6 +18,10 @@ body {
 	margin-right: 10px;
 }
 
+.start-time {
+	font-size: 90%;
+}
+
 .build-success {
 	background-color: #5B9727;
 }

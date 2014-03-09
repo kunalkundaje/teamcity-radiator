@@ -8,10 +8,14 @@ block mainContent
       - for(var buildIndex in builds)
         - var build = builds[buildIndex]
         div(class='row build build-#{build.status}')
-          .build-number #{build.number}
-          ul.changes
-            - for(var changeIndex in build.changes)  
-              li #{build.changes[changeIndex]}
-          - for(var stageIndex in build.stages)
-            - var stage = build.stages[stageIndex]
-            div(class='pull-left stage stage-#{stage.status}') #{stage.label}
+          .container-fluid
+            .row
+              div(class='pull-left build-number') #{build.number}
+              div(class='pull-right start-time') #{build.startTime}
+            .row
+              ul.changes
+                - for(var changeIndex in build.changes)  
+                  li #{build.changes[changeIndex]}
+            - for(var stageIndex in build.stages)
+              - var stage = build.stages[stageIndex]
+              div(class='pull-left stage stage-#{stage.status}') #{stage.label}

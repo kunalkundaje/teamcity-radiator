@@ -4,15 +4,15 @@ var helpers = require('../lib/helpers'),
 
 describe('Helpers', function () {
 
-  beforeEach(function () {
-    nock.disableNetConnect();
-  });
-
-  afterEach(function () {
-    nock.cleanAll();
-  });
-
   describe('#getResponseAsJSObject', function () {
+
+    beforeEach(function () {
+      nock.disableNetConnect();
+    });
+
+    afterEach(function () {
+      nock.cleanAll();
+    });    
 
     it('returns a valid object for a valid response', function (done) {
       var requestUrl = 'http://server/endpoint';
@@ -61,6 +61,18 @@ describe('Helpers', function () {
         
         done();
       });      
+    });
+
+  });
+
+  describe('#parseTimestamp', function () {
+
+    it('parses a TeamCity API timestamp', function () {
+      var tcTimestamp = '20140221T105606-0500';
+
+      var parsedTimestamp = helpers.parseTimestamp(tcTimestamp);
+
+      expect(parsedTimestamp).to.eq('Fri Feb 21 2014 10:56:06');
     });
 
   });
