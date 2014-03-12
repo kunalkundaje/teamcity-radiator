@@ -3,6 +3,11 @@ teamcity-radiator
 
 [![Build Status](https://travis-ci.org/kunalkundaje/teamcity-radiator.png?branch=master)](https://travis-ci.org/kunalkundaje/teamcity-radiator)
 
+![TeamCity Radiator Example](http://kunalkundaje.github.com/teamcity-radiator/images/teamcity_radiator.png)
+
+License
+-------
+
 The MIT License (MIT)
 
 Copyright (c) 2014 Kunal Kundaje. http://kunal.kundaje.net
