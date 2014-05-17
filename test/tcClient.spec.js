@@ -30,6 +30,29 @@ describe('TcClient', function () {
         expect(data.stages.length).to.eq(1);
         expect(data.builds.length).to.eq(1);
         expect(data.builds[0].length).to.eq(4);
+
+        expect(err).to.be.null;
+        
+        done();
+      });
+    });
+
+    it('fails gracefully when builds cannot be retrieved', function (done) {
+      var teamCityUrl = 'http://teamcity.mydomain.com:8111',
+          stage       = { "label": "Step 1", "buildTypeId": "bt9999" };
+
+      var serviceCall = nock(teamCityUrl)
+        .get('/guestAuth/app/rest/builds/?locator=buildType:' + stage.buildTypeId + ',count:10,running:any,canceled:any')
+        .replyWithFile(200, __dirname + '/../stub/responses/builds_invalid.xml');
+
+      tcClient.fetchBuilds({ teamCityUrl: teamCityUrl, stages: [ stage ] }, function (err, data) {
+
+        expect(data.teamCityUrl).to.not.be.null;
+        expect(data.stages.length).to.eq(1);
+        expect(data.builds).to.be.undefined;
+
+        expect(err).to.contain('Step 1');
+        expect(err).to.contain('bt9999');
         
         done();
       });

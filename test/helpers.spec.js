@@ -48,21 +48,6 @@ describe('Helpers', function () {
       });      
     });
 
-    it('returns an error for a malformed response', function (done) {
-      var requestUrl = 'http://server/endpoint',
-          serviceCall = nock('http://server').get('/endpoint').reply(200, 'malformed xml');
-
-      helpers.getResponseAsJSObject(requestUrl, function (err, data) {
-
-        expect(serviceCall.isDone()).to.be.true;
-
-        expect(err).to.not.be.null;
-        expect(data).to.be.null;
-        
-        done();
-      });      
-    });
-
   });
 
   describe('#parseTimestamp', function () {
