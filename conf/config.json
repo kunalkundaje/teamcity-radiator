@@ -1,4 +1,8 @@
 {
+  "global_credentials": {
+    "user": "testuser",
+    "pass": "testpass"
+  },
   "example_project": {
     "teamCityUrl": "http://teamcity.mydomain.com:8111",
     "project": "Example Project",
@@ -11,6 +15,10 @@
   },
 
   "example_project_branch": {
+    "credentials": {
+      "user": "testprojectuser",
+      "pass": "testprojectpass"
+    },
     "teamCityUrl": "http://teamcity.mydomain.com:8111",
     "project": "Example Project Release Branch",
     "stages": [
