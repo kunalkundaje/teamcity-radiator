@@ -5,6 +5,14 @@ teamcity-radiator
 
 ![TeamCity Radiator Example](http://kunalkundaje.github.com/teamcity-radiator/images/teamcity_radiator.png)
 
+Get Started
+-----------
+1. Clone this repository.
+2. npm install
+3. node app.js stub
+
+This starts the server up in "stub" mode so that you don't need an actual instance of TeamCity running. Open http://localhost:3000/builds/example_project to see what the radiator looks like with sample data.
+
 License
 -------
 
