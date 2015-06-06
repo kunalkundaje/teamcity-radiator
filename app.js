@@ -6,6 +6,7 @@ var express  = require('express'),
     app      = express(),
     port     = process.env.PORT || 3000;
 
+// Express configuration
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -16,27 +17,28 @@ app.configure(function() {
   app.use(express.static(__dirname + '/public'));
   app.use(app.router);
 });
-
 app.configure('development', function() {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
-
 app.configure('production', function() { 
   app.use(express.errorHandler()); 
 });
 
-app.listen(port);
-
+// Express routes
 app.get('/builds/:projectKey', function (request, response) {
-  var projectKey = request.params['projectKey'],
-      getProjectKey = function (callback) { callback(null, projectKey); };
+  var projectKey = request.params['projectKey'];
 
+  // If app is started in stub mode, use stub responses via nock instead of calling the TeamCity API
   if (process.argv[2] === 'stub') {
     stub.start(projectKey);
   }
 
+  var getProjectKeyAsync = function (callback) { 
+    callback(null, projectKey); 
+  };
+
   async.waterfall([
-      getProjectKey,
+      getProjectKeyAsync,
       config.readProjectConfig,
       tcClient.fetchBuilds,
       tcClient.createPipelines,
@@ -51,4 +53,9 @@ app.get('/builds/:projectKey', function (request, response) {
       }
     }
   );
+});
+
+// Start up the server
+var server = app.listen(port, function () {
+  console.log('Listening on port %s', server.address().port);
 });
