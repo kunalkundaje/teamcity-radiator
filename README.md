@@ -11,7 +11,7 @@ Get Started
 2. npm install
 3. node app.js stub
 
-This starts the server up in "stub" mode so that you don't need an actual instance of TeamCity running. Open http://localhost:3000/builds/example_project to see what the radiator looks like with sample data.
+This starts the server up in "stub" mode so that you don't need an actual instance of TeamCity running. Open **http://localhost:3000/builds/example_project** to see what the radiator looks like with sample data.
 
 License
 -------
